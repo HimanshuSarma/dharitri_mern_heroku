@@ -44,7 +44,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cookieParser());
 
 __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use(express.static(path.join(__dirname, './frontend/build')));
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 })
