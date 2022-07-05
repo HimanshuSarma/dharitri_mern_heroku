@@ -65,13 +65,10 @@ app.use(cookieParser());
 // app.use('/', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
+app.use(app.use(express.static('frontend/build')));
 app.use('*', (req, res) => {
-        res.sendFile('./routes/User-routes.js');
-    })
-    // app.use(express.static(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg')));
-    // app.use('*', (req, res) => {
-    //     res.sendFile(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg'));
-    // })
+    res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+})
 
 try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
