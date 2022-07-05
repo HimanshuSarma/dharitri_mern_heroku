@@ -7,6 +7,7 @@ const CORS = require('cors');
 const crypto = require('crypto');
 const uuid = require('uuid');
 const Razorpay = require('razorpay');
+const path = require('path');
 
 const UserRoutes = require('./routes/User-routes');
 const ProductRoutes = require('./routes/Product-routes');
@@ -63,7 +64,11 @@ app.use('/', ProductRoutes.router);
 
 app.use('/', userTokenVerification.router, CartRoutes.router);
 
-app.use(express.static('./frontend/build'));
+__dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+})
 
 try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
