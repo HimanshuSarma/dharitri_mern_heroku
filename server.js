@@ -67,7 +67,7 @@ app.use(cookieParser());
 __dirname = path.resolve();
 const a = path.join(__dirname + '/backend/data/productsImgs/airpods.jpg')
 app.use('*', (req, res) => {
-        res.send(a);
+        res.sendFile(a);
     })
     // app.use(express.static(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg')));
     // app.use('*', (req, res) => {
