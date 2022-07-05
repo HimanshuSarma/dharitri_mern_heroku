@@ -65,7 +65,6 @@ app.use(cookieParser());
 // app.use('/', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
-app.use(express.static(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg')));
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg'));
 })
