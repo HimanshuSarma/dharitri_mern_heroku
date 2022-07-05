@@ -65,9 +65,11 @@ app.use(cookieParser());
 // app.use('/', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
-app.use('*', (req, res) => {
-    res.send(__dirname);
-})
+app.send(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg'))
+    // app.use(express.static(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg')));
+    // app.use('*', (req, res) => {
+    //     res.sendFile(path.join(__dirname + '/backend/data/productsImgs/airpods.jpg'));
+    // })
 
 try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
