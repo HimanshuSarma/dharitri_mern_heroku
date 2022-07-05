@@ -65,9 +65,9 @@ app.use(cookieParser());
 // app.use('/', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
-app.use(express.static('frontend/build'));
+app.use(express.static('/backend/frontend/build'));
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+    res.sendFile(path.join('/backend/frontend/build', 'index.html'));
 })
 
 try {
