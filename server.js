@@ -66,7 +66,7 @@ app.use(cookieParser());
 
 __dirname = path.resolve();
 app.use('*', (req, res) => {
-    res.send('123');
+    res.send(__dirname);
 })
 
 try {
