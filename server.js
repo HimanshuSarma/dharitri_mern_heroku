@@ -43,6 +43,12 @@ app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use(cookieParser());
 
+__dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+})
+
 app.post('/payment', async(req, res) => {
     const razorpay = new Razorpay({
         key_id: process.env.RAZORPAY_KEY_ID,
@@ -64,11 +70,7 @@ app.use('/', ProductRoutes.router);
 
 app.use('/', userTokenVerification.router, CartRoutes.router);
 
-__dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/frontend/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-})
+
 
 try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
