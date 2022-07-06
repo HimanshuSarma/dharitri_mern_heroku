@@ -98,7 +98,7 @@ function App() {
           <Route path='/user/login' element={<Login />} />
           <Route path='/products/get-products' element={<Products />} />
           <Route path='/product/:productID' element={<ProductScreen />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/user/cart' element={<Cart />} />
           <Route path='/subscriptions' element={<Subscriptions />} />
           <Route path='/not-found' element={<NotFound />} />
           <Route path='/checkout' element={<Checkout />} />
