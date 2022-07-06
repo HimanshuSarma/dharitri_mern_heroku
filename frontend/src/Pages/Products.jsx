@@ -33,17 +33,17 @@ const Products = () => {
     }
 
     const updateProductsPageHandler = (pageNumber) => {
-        navigate(`/products/get-products?page=${pageNumber}`);
+        navigate(`/products?page=${pageNumber}`);
     }
 
     const incrementDecrementProductsPageHandler = (type) => {
         if(type === 'inc') {
             if(userProductsPage < totalPages) {
-                navigate(`/products/get-products?page=${userProductsPage+1}`);
+                navigate(`/products?page=${userProductsPage+1}`);
             }
         } else if(type === 'dec') {
             if(userProductsPage > 1) {
-                navigate(`/products/get-products?page=${userProductsPage-1}`);
+                navigate(`/products?page=${userProductsPage-1}`);
             }
         }
     }
@@ -52,7 +52,7 @@ const Products = () => {
         if(currentProductsPageQueryParam && userProductsPage && userProductsPage !== currentProductsPageQueryParam) {
             dispatch(updateUserProductsPage(currentProductsPageQueryParam));
         } else if(!currentProductsPageQueryParam) {
-            navigate('/products/get-products?page=1'); // If the products page query param is null or undefined or some
+            navigate('/products?page=1'); // If the products page query param is null or undefined or some
                                           // invalid value, then redirect to page 1 of the products page.
         }
     }, [currentProductsPageQueryParam, dispatch, navigate]);
