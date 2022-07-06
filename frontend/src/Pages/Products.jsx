@@ -26,6 +26,8 @@ const Products = () => {
 
     const currentProductsPageQueryParam = parseInt(useLocation().search.split('=')[1]);
 
+    console.log(currentProductsPageQueryParam);
+
     const productPageRedirection = (productID) => {
         navigate(`/product/${productID}`);
     }
