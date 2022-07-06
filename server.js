@@ -43,26 +43,26 @@ app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use(cookieParser());
 
-// app.post('/payment', async(req, res) => {
-//     const razorpay = new Razorpay({
-//         key_id: process.env.RAZORPAY_KEY_ID,
-//         key_secret: process.env.RAZORPAY_KEY_SECRET
-//     });
+app.post('/payment', async(req, res) => {
+    const razorpay = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY_ID,
+        key_secret: process.env.RAZORPAY_KEY_SECRET
+    });
 
-//     const response = await razorpay.orders.create({
-//         amount: 5000,
-//         currency: 'INR',
-//         receipt: 'App',
-//         payment_capture: 1
-//     });
-//     res.json(response);
-// })
+    const response = await razorpay.orders.create({
+        amount: 5000,
+        currency: 'INR',
+        receipt: 'App',
+        payment_capture: 1
+    });
+    res.json(response);
+})
 
-// app.use('/', UserRoutes.router);
+app.use('/', UserRoutes.router);
 
-// app.use('/', ProductRoutes.router);
+app.use('/', ProductRoutes.router);
 
-// app.use('/', userTokenVerification.router, CartRoutes.router);
+app.use('/', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
 process.env.PWD = process.cwd();
