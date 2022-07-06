@@ -30,7 +30,7 @@ router.get('/get-products', async(req, res, next) => {
     }
 })
 
-router.get('/product/:productID', async(req, res, next) => {
+router.get('/:productID', async(req, res, next) => {
     try {
         const product = await ProductSchema.ProductSchema.findById(req.params.productID);
         if (!product) {

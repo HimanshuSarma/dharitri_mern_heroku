@@ -93,18 +93,18 @@ function App() {
       <Header />
       <main className='width-limit-center main-component-margin'>
         <Routes>
-          {!isLoggedInState && <Route path='/signup' element={<Signup />} />}
+          {!isLoggedInState && <Route path='/user/signup' element={<Signup />} />}
           <Route path='/userID' element={<UserID />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/products' element={<Products />} />
+          <Route path='/user/login' element={<Login />} />
+          <Route path='/products/get-products' element={<Products />} />
           <Route path='/product/:productID' element={<ProductScreen />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/subscriptions' element={<Subscriptions />} />
           <Route path='/not-found' element={<NotFound />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/payment' element={<Payment />} />
-          {!isLoggedInState && <Route path='/*' element={<Navigate to='/signup' />} />}
-          {isLoggedInState && <Route path='/*' element={<Navigate to='/products?page=1' />} />}
+          {!isLoggedInState && <Route path='/*' element={<Navigate to='/user/signup' />} />}
+          {isLoggedInState && <Route path='/*' element={<Navigate to='/products/get-products?page=1' />} />}
         </Routes> 
       </main>
       {/* <button onClick={displayRazorpay}>Pay</button> */}

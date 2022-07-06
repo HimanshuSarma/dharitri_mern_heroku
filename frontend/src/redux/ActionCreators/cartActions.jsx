@@ -9,7 +9,7 @@ export const editCart = (payload, navigateHandler, getCartItemQty, setMessageHan
 
         try {
              
-            const editCartRequest = await fetch(`${base_url}/cart`, {
+            const editCartRequest = await fetch(`${base_url}/cart/patch-cart`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -77,7 +77,7 @@ export const getCart = () => {
 
         try {
 
-            const getCartReq = await fetch(`${base_url}/cart`, {
+            const getCartReq = await fetch(`${base_url}/cart/get-cart`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -128,7 +128,7 @@ export const getCartQty = (productID) => {
         })
 
         try {
-            const getCartProductReq = await fetch(`${base_url}/get-cart-item/${productID}`, {
+            const getCartProductReq = await fetch(`${base_url}/cart/get-cart-item/${productID}`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -177,7 +177,7 @@ export const deleteCartItem = (productID, setMessageHandler) => {
         });
 
         try {
-            const deleteCartItemReq = await fetch(`${base_url}/cart/${productID}`, {
+            const deleteCartItemReq = await fetch(`${base_url}/cart/delete-cart-item/${productID}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })
