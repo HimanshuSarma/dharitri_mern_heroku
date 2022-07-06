@@ -18,7 +18,7 @@ router.post('/signup', async(req, res, next) => {
                 const password = await bcrypt.hash(req.body.password, 10);
                 const user = new UserModels.CustomerSchema({...req.body,
                     phone_number: parseInt(req.body.phone_number),
-                    pincode: parseInt(req.body.pincode),
+                    pincode: req.body.pincode ? parseInt(req.body.pincode) : '',
                     password
                 });
                 const response = await user.save();
