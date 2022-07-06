@@ -21,8 +21,6 @@ import {checkUserLogin} from './redux/ActionCreators/userActions';
 import './App.css';
 
 function App() {
-  console.log(base_url, document.domain);
-
   const dispatch = useDispatch();
 
   const isLoggedInState = useSelector(store => store.isLoggedInState);

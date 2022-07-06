@@ -62,7 +62,7 @@ app.use('/user', UserRoutes.router);
 
 app.use('/products', ProductRoutes.router);
 
-app.use('/cart', CartRoutes.router);
+app.use('/cart', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
 process.env.PWD = process.cwd();
