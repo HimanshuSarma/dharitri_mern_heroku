@@ -161,7 +161,7 @@ export const checkUserLogin = () => {
                 // Clearing cart state is not reqd bcoz cart will be empty on App load...
             }
         } catch (err) {
-            console.log(err);
+            console.log(123, err);
         }
     }
 }
