@@ -23,7 +23,7 @@ const ProductScreen = () => {
   const dispatch = useDispatch();
 
   const {isLoading} = useSelector(store => store.cartState);
-  const {product} = useSelector(store => store.productState);
+  const {product, productStateLoading} = useSelector(store => store.productState);
   const _id = product ? product._id : null;
   // const isLoggedInState = useSelector(store => store.isLoggedInState);
 
@@ -50,7 +50,7 @@ const ProductScreen = () => {
 
   return (
     <>
-    {isLoading && <Backdrop><LoadingSpinner /></Backdrop>}
+    {(isLoading || productStateLoading) && <Backdrop><LoadingSpinner /></Backdrop>}
     {productScreenMessage && <BottomRightCard>
       <SuccessMessageIcon />
       <h3 className='success-message'>{productScreenMessage}</h3>

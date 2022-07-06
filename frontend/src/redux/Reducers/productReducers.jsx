@@ -8,16 +8,16 @@ export const productListReducer = (currentProductListState = {products: null, pr
     return currentProductListState;
 }
 
-export const productReducer = (currentProductReducer = {product: null, isLoading: false, productDataReceived: false}, action) => {
+export const productReducer = (currentProductState = {product: null, productStateLoading: false, productDataReceived: false}, action) => {
     if(action.type === 'PRODUCT_STATE_LOADING') {
-        return {product: null, isLoading: true, productDataReceived: false};
+        return {product: null, productStateLoading: true, productDataReceived: false};
     } else if(action.type === 'PRODUCT_STATE_LOADED') {
-        return {product: action.payload, isLoading: false, productDataReceived: true};
+        return {product: action.payload, productStateLoading: false, productDataReceived: true};
     } else if(action.type === 'PRODUCT_STATE_LOADING_FAILED') {
-        return {product: null, isLoading: false, productDataReceived: false};
+        return {product: null, productStateLoading: false, productDataReceived: false};
     }
 
-    return currentProductReducer;
+    return currentProductState;
 }
 
 export const productsCountInDBReducer = (productsCountInDB = null, action) => {
