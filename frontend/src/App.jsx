@@ -102,7 +102,6 @@ function App() {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/payment' element={<Payment />} />
           {!isLoggedInState && <Route path='/*' element={<Navigate to='/signup' />} />}
-          {isLoggedInState && <Route path='/*' element={<Navigate to='/not-found' />} /> }
           {isLoggedInState && <Route path='/*' element={<Navigate to='/products?page=1' />} />}
         </Routes> 
       </main>
