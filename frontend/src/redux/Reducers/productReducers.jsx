@@ -1,8 +1,8 @@
-export const productListReducer = (currentProductListState = {products: null, productsPageNumber: null, isLoading: false, productListDataReceived: false}, action) => {
+export const productListReducer = (currentProductListState = {products: null, productsPageNumber: null, productListStateLoading: false, productListDataReceived: false}, action) => {
     if(action.type === 'PRODUCT_LIST_STATE_LOADING') {
-        return {...currentProductListState, isLoading: true, productListDataReceived: false};
+        return {...currentProductListState, productListStateLoading: true, productListDataReceived: false};
     } else if(action.type === 'PRODUCT_LIST_STATE_LOADED') {
-        return {products: action.payload.products, productsPageNumber: action.payload.productsPageNumber, isLoading: false, productListDataReceived: true};
+        return {products: action.payload.products, productsPageNumber: action.payload.productsPageNumber, productListStateLoading: false, productListDataReceived: true};
     }
 
     return currentProductListState;

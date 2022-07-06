@@ -17,7 +17,8 @@ const Products = () => {
     const navigate = useNavigate();
 
     const {products, isLoading} = useSelector(store => store.productListState);
-    const {productsPageNumber} = useSelector(store => store.productListState);
+    const {productsPageNumber, productListStateLoading} = useSelector(store => store.productListState);
+    
     const productsCountInDB = useSelector(store => store.productsCountInDB);
     const userProductsPage = useSelector(store => store.userProductsPage); // The default user products page that loads on
                                                                                  // when the App loads...  
@@ -58,8 +59,8 @@ const Products = () => {
     useEffect(() => {
         if((userProductsPage && (userProductsPage >= 1 && userProductsPage <= Math.ceil(productsCountInDB / pageSize))) || 
             !productsCountInDB) {
-            if((productsPageNumber && productsPageNumber !== userProductsPage) || !productsPageNumber) {
-                console.log(123);
+            if(((productsPageNumber && productsPageNumber !== userProductsPage) || !productsPageNumber) && 
+                !productListStateLoading) {
                 dispatch(getCurrentPageProducts(userProductsPage, pageSize, productsCountInDB));
             }
         }
