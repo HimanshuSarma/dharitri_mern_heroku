@@ -68,7 +68,7 @@ const Products = () => {
 
     return (
         <>
-        {isLoading && <Backdrop><LoadingSpinner /></Backdrop>}
+        {productListStateLoading && <Backdrop><LoadingSpinner /></Backdrop>}
         <div className='products-page-whole-screen-wrapper flex-column align-items-center'>
             <ContentWrapper className='products-grid' isProductsPage={true}>
                 {products && products.map((product, index) => {
