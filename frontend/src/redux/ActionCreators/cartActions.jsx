@@ -69,7 +69,7 @@ export const editCart = (payload, navigateHandler, getCartItemQty, setMessageHan
     }
 }
 
-export const getCart = () => {
+export const getCart = (setMessageHandlerOptionalArg, messageOptional) => {
     return async (dispatch, getState) => {
         dispatch({
             type: 'CART_STATE_LOADING'
@@ -90,6 +90,7 @@ export const getCart = () => {
                     payload: dataReceived.cart
                 })
                
+                setMessageHandlerOptionalArg(messageOptional);
             } else {
                 if(getCartReq.status === 401 || getCartReq.status === 404) { // The user is not authenticated...
                                                                              // or the user doesn't exist...
@@ -185,8 +186,8 @@ export const deleteCartItem = (productID, setMessageHandler) => {
             const deleteCartItemReqData = await deleteCartItemReq.json();
 
             if(deleteCartItemReq.ok) {
-                dispatch(getCart());
-                setMessageHandler(deleteCartItemReqData.message);
+                // Passing the optional message handler...
+                dispatch(getCart(setMessageHandler, deleteCartItemReqData.message));
             } else {
                 // 401 error for authentication failed...
                 // 404 error for cart item not found...
