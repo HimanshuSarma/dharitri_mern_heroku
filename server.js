@@ -65,9 +65,10 @@ app.use(cookieParser());
 // app.use('/', userTokenVerification.router, CartRoutes.router);
 
 __dirname = path.resolve();
-app.use(express.static('/backend/frontend/build'));
+process.env.PWD = process.cwd();
+app.use(express.static(path.join(process.env.PWD, 'frontend', 'build')));
 app.use('*', (req, res) => {
-    res.sendFile(path.join('/backend/frontend/build', 'index.html'));
+    res.sendFile(path.join(process.env.PWD, 'frontend', 'build', 'index.html'));
 })
 
 try {
