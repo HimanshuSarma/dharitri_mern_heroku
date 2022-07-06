@@ -58,18 +58,21 @@ app.post('/payment', async(req, res) => {
     res.json(response);
 })
 
-app.use('/', UserRoutes.router);
+app.use('/user', UserRoutes.router);
 
-app.use('/', ProductRoutes.router);
+app.use('/products', ProductRoutes.router);
 
-app.use('/', userTokenVerification.router, CartRoutes.router);
+app.use('/cart', CartRoutes.router);
 
 __dirname = path.resolve();
 process.env.PWD = process.cwd();
-app.use(express.static(path.join(process.env.PWD, 'frontend', 'build')));
-app.use('*', (req, res) => {
-    res.sendFile(path.join(process.env.PWD, 'frontend', 'build', 'index.html'));
-})
+
+if (process.env.ENVIRONMENT === 'production') {
+    app.use(express.static(path.join(process.env.PWD, 'frontend', 'build')));
+    app.use('*', (req, res) => {
+        res.sendFile(path.join(process.env.PWD, 'frontend', 'build', 'index.html'));
+    })
+}
 
 try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
