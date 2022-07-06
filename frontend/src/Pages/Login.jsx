@@ -37,7 +37,7 @@ const Login = () => {
 
     useEffect(() => {
         if(isLoggedIn && userProductsPage) {
-            navigate(`/products?page=${userProductsPage}`);
+            navigate(`/products/get-products?page=${userProductsPage}`);
         } else if(isLoggedIn && !userProductsPage) {
             // dispatch(getUserDefaultProductsPage());
         }

@@ -31,17 +31,17 @@ const Products = () => {
     }
 
     const updateProductsPageHandler = (pageNumber) => {
-        navigate(`/products?page=${pageNumber}`);
+        navigate(`/products/get-products?page=${pageNumber}`);
     }
 
     const incrementDecrementProductsPageHandler = (type) => {
         if(type === 'inc') {
             if(userProductsPage < totalPages) {
-                navigate(`/products?page=${userProductsPage+1}`);
+                navigate(`/products/get-products?page=${userProductsPage+1}`);
             }
         } else if(type === 'dec') {
             if(userProductsPage > 1) {
-                navigate(`/products?page=${userProductsPage-1}`);
+                navigate(`/products/get-products?page=${userProductsPage-1}`);
             }
         }
     }
@@ -50,7 +50,7 @@ const Products = () => {
         if(currentProductsPageQueryParam && userProductsPage && userProductsPage !== currentProductsPageQueryParam) {
             dispatch(updateUserProductsPage(currentProductsPageQueryParam));
         } else if(!currentProductsPageQueryParam) {
-            navigate('/products?page=1'); // If the products page query param is null or undefined or some
+            navigate('/products/get-products?page=1'); // If the products page query param is null or undefined or some
                                           // invalid value, then redirect to page 1 of the products page.
         }
     }, [currentProductsPageQueryParam, dispatch, navigate]);
@@ -89,15 +89,22 @@ const Products = () => {
 
             {totalPages >= 1 && <ContentWrapper>
                 <div className='flex'>
-                    <button onClick={() => incrementDecrementProductsPageHandler('dec')} className='products-page-btn margin-right'><i className="fa-solid fa-chevron-left"></i></button>
+                    <button onClick={() => incrementDecrementProductsPageHandler('dec')} 
+                        className='products-page-btn margin-right'>
+                        <i className="fa-solid fa-chevron-left"></i>
+                    </button>
                     {[...Array(totalPages).keys()].map((el, idx) => {
                         return (
-                            <button onClick={(event) => updateProductsPageHandler(el+1)} className={`products-page-btn roboto-font font-wt-400 margin-right ${(userProductsPage === el + 1) ? 'dark-green-hex-background-white-text-transition': ''}`} key={idx}>
+                            <button onClick={(event) => updateProductsPageHandler(el+1)} 
+                                className={`products-page-btn roboto-font font-wt-400 margin-right ${(userProductsPage === el + 1) ? 'dark-green-hex-background-white-text-transition': ''}`} key={idx}>
                                 {el+1}
                             </button>
                         )
                     })}
-                    <button onClick={() => incrementDecrementProductsPageHandler('inc')} className='products-page-btn'><i className="fa-solid fa-chevron-right"></i></button>
+                    <button onClick={() => incrementDecrementProductsPageHandler('inc')} 
+                        className='products-page-btn'><i className="fa-solid fa-chevron-right">
+                        </i>
+                    </button>
                 </div>
             </ContentWrapper>}
         </div>
