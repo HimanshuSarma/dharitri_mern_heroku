@@ -76,7 +76,10 @@ const ProductScreen = () => {
                             })}
                         </select>
                         
-                        <button className='rounded-dark-green-background-white-text-btn roboto-font product-page-add-to-cart-btn' onClick={(event) => {addProductToCartHandler(event, product._id)}}>Add to Cart</button>
+                        <button className='rounded-dark-green-background-white-text-btn roboto-font product-page-add-to-cart-btn' 
+                              onClick={(event) => {addProductToCartHandler(event, product._id)}}>
+                            Add to Cart
+                        </button>
                       </form>}
                     </div>
                   </div>
