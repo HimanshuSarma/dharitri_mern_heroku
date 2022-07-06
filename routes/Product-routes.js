@@ -3,7 +3,7 @@ const ProductSchema = require('../models/Product-models');
 
 const router = express.Router();
 
-router.get('/products', async(req, res, next) => {
+router.get('/get-products', async(req, res, next) => {
     try {
 
         let productsCountInDB = undefined;

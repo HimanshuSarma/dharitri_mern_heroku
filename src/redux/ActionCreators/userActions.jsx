@@ -8,7 +8,7 @@ export const createUserAction = (formState, changeUserDetailsValidity, changeWil
                 type: 'USER_STATE_LOADING'
             })
 
-            const createUserReq = await fetch(`${base_url}/signup`, {
+            const createUserReq = await fetch(`${base_url}/user/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ export const loginUserAction = (loginCredentials, setIsLoggedIn) => {
         dispatch({type: 'USER_STATE_LOADING'});
 
         try {
-            const loginUserRequest = await fetch(`${base_url}/login`, {
+            const loginUserRequest = await fetch(`${base_url}/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ export const userLogout = (setIsLogoutLoading) => {
         setIsLogoutLoading(true)
 
         try {
-            const userLogoutReq = await fetch(`${base_url}/logout`, {
+            const userLogoutReq = await fetch(`${base_url}/user/logout`, {
                 credentials: 'include'
             })
 
@@ -145,7 +145,7 @@ export const checkUserLogin = () => {
     return async (dispatch, getState) => {
         try {
 
-            const checkUserLoginReq = await fetch(`${base_url}/check-login`, {
+            const checkUserLoginReq = await fetch(`${base_url}/user/check-login`, {
                 credentials: 'include',
             })
 
@@ -172,7 +172,7 @@ export const getUserShippingAddresses = () => {
         try {
             dispatch({type: 'USER_SHIPPING_ADDRESSES_STATE_LOADING'});
 
-            const getUserAddressesReq = await fetch(`${base_url}/user-addresses`, {
+            const getUserAddressesReq = await fetch(`${base_url}/user/user-addresses`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -196,7 +196,7 @@ export const getUserShippingAddress = () => {
         try {
             dispatch({type: 'USER_SHIPPING_ADDRESS_STATE_LOADING'});
 
-            const getUserShippingAddressReq = await fetch(`${base_url}/user-address`, {
+            const getUserShippingAddressReq = await fetch(`${base_url}/user/user-address`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -220,7 +220,7 @@ export const updateUserShippingAddress = (payload, newAddress) => {
         try {
             dispatch({type: 'ADD_USER_SHIPPING_ADDRESS_STATE_LOADING'});
 
-            const addUserAddressReq = await fetch(`${base_url}/update-user-address`, {
+            const addUserAddressReq = await fetch(`${base_url}/user/update-user-address`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

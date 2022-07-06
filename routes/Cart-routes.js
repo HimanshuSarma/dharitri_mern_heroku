@@ -6,7 +6,7 @@ const ProductSchema = require('../models/Product-models');
 
 const router = express.Router();
 
-router.patch('/cart', async(req, res, next) => {
+router.patch('/patch-cart', async(req, res, next) => {
 
     const doesProductExist = await ProductSchema.ProductSchema.findById(req.body.product.productID);
 
@@ -47,7 +47,7 @@ router.patch('/cart', async(req, res, next) => {
     }
 });
 
-router.get('/cart', async(req, res, next) => {
+router.get('/get-cart', async(req, res, next) => {
     try {
         const userPayload = req.userPayload;
         let userDocument = await UserSchema.CustomerSchema.findById(userPayload._id).populate('cart.product');
@@ -89,7 +89,7 @@ router.get('/get-cart-item/:productID', async(req, res, next) => {
 })
 
 
-router.delete('/cart/:productID', async(req, res, next) => {
+router.delete('/delete-cart-item/:productID', async(req, res, next) => {
     try {
         const userPayload = req.userPayload;
         let userDocument = await UserSchema.CustomerSchema.findById(userPayload._id).populate('cart.product');

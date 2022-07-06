@@ -8,7 +8,7 @@ export const getCurrentPageProducts = (currentProductsPage, pageSize, productsCo
 
         try {
 
-            const request = await fetch(`${base_url}/products?page=${currentProductsPage}&pageSize=${pageSize}&sendTotalProductsCount=${productsCountInDB}`);
+            const request = await fetch(`${base_url}/products/get-products?page=${currentProductsPage}&pageSize=${pageSize}&sendTotalProductsCount=${productsCountInDB}`);
             const products = await request.json();
 
             if(request.ok) {
@@ -42,7 +42,7 @@ export const getProduct = (productID) => {
         });
 
         try {
-            const getProductRequest = await fetch(`${base_url}/product/${productID}`);
+            const getProductRequest = await fetch(`${base_url}/products/product/${productID}`);
 
             const product = await getProductRequest.json();
 
