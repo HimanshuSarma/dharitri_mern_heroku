@@ -64,7 +64,7 @@ const Header = () => {
           {<NavLink to={`${isLoggedInState ? '/products/get-products?page=1' : '/user/signup'}`} className='header-nav-btn'>
             Home
           </NavLink>}
-          <NavLink to={`/products?page=${userProductsPage}`} className='header-nav-btn'>
+          <NavLink to={`/products/get-products?page=${userProductsPage}`} className='header-nav-btn'>
             All Products
           </NavLink>
           <NavLink to='/about' className='header-nav-btn'>
