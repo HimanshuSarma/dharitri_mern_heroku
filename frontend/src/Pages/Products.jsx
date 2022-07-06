@@ -59,6 +59,7 @@ const Products = () => {
         if((userProductsPage && (userProductsPage >= 1 && userProductsPage <= Math.ceil(productsCountInDB / pageSize))) || 
             !productsCountInDB) {
             if((productsPageNumber && productsPageNumber !== userProductsPage) || !productsPageNumber) {
+                console.log(123);
                 dispatch(getCurrentPageProducts(userProductsPage, pageSize, productsCountInDB));
             }
         }
